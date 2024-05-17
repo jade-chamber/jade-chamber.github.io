@@ -1,17 +1,106 @@
 ---
+import BaseLayout from '../layouts/Base.astro';
+import { Image } from 'astro:assets';
+
+const tech: Array<{ title: string; desc: string; href: string }> = [
+	{
+		title: "Liyue",
+		desc: "🧧 Discord server for the Jade Chamber",
+		href: "https://github.com/jade-chamber"
+	},
+	{
+		title: "Baixiao",
+		desc: "💾 Resource downloads from anime game™",
+		href: "https://github.com/jade-chamber/baixiao",
+	},
+	{
+		title: "Baiwen",
+		desc: "📝 Resource parsing from anime game™",
+		href: "https://github.com/jade-chamber/baiwen",
+	},
+	{
+		title: "Baishi",
+		desc: "🗂️ Resource organizing for anime game™",
+		href: "https://github.com/jade-chamber/baishi",
+	}
+];
+
+const thanks: Array<{ title: string; desc: string; href: string }> = [
+	{
+		title: "Nana",
+		desc: "Research and Development",
+		href: "https://github.com/ladyfoxpoint"
+	},
+	{
+		title: "Razmoth",
+		desc: "Hoyostudio",
+		href: "https://github.com/RazTools/Studio"
+	},
+	{
+		title: "BiosNod",
+		desc: "Live-data-downloader",
+		href: "https://github.com/BiosNod/Live-data-downloader"
+	},
+]
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Jade Chamber</h1>
-		<h2>Soon:tm:</h2>
-	</body>
-</html>
+<BaseLayout title="Home">
+	<div align="center">
+	<section class="mb-4">
+		<h1 class="title">The Jade Chamber</h1>
+			<p class="mb-4 sm:mb-8">
+				“The floating palace of the Tianquan Ningguang.
+				It once sunk into the Sea of Clouds after being used to suppress the Overlord of the Vortex, and it rose high above Liyue Harbor once more to combat other threats. Today, some people regard the Jade Chamber not only as a symbol of Ningguang's might, but also as a sign of Liyue Harbor's adamantine will.”
+			</p>
+			<Image 
+				src="https://static.wikia.nocookie.net/gensin-impact/images/1/16/Jade_Chamber_Support_Card.png"
+				alt="The Jade Chamber"
+				width="200"
+				height="350"/>
+	</section>
+
+	<section class="mt-16">
+			<h2 class="title">Repositories</h2>
+			<ul class="space-y-4 sm:space-y-2">
+				{
+					tech.map(({ href, title, desc }) => (
+						<li>
+							<a
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="cody-link inline-block"
+							>
+								{title}
+							</a>: 
+							<p class="inline-block sm:mt-2">{desc}</p>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+
+		<section class="mt-8 sm:mt-16">
+			<h2 class="title">Special thanks: </h2>
+			<ul class="space-y-4 sm:space-y-2">
+				{
+					thanks.map(({ href, title, desc }) => (
+						<li>
+							<p class="inline-block sm:mt-2">{title}: </p>
+							<a
+								href={href}
+								target="_blank"
+								rel="noopener noreferrer"
+								class="cody-link inline-block"
+							>
+								{desc}
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</div>
+
+</BaseLayout>
